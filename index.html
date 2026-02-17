@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
+
 <head>
     <meta charset="UTF-8">
+    <!-- Адаптивність -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог книг</title>
+    <!-- SEO опис -->
+    <meta name="description" content="Онлайн бібліотека з великим вибором книг. Читайте книги онлайн безкоштовно.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Головна | Онлайн бібліотека">
+    <meta property="og:description"
+        content="Читайте улюблені книги онлайн. Велика електронна бібліотека для студентів та книголюбів.">
+    <meta property="og:image" content="images/icon/logo.png">
+    <meta property="og:url" content="http://localhost/index.html">
+    <title>Онлайн бібліотека </title>
 </head>
+
 <body>
-    <header></header>
-    <main></main>
+    <header>
+        <h1>Онлайн бібліотека</h1>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="contacts.html">Контакти</a>
+        </nav>
+
+    </header>
+    <main>
+        <picture>
+            <!-- для великих екранів -->
+            <source media="(min-width: 800px)" srcset="images/library-home.jpg">
+            <!-- для мобільних -->
+            <source media="(max-width: 799px)" srcset="images/library-home.jpg">
+            <!-- базове зображення, якщо браузер не підтримує picture -->
+            <img src="images/library-home.jpg" alt="Онлайн бібліотека з книгами">
+        </picture>
+
+        <audio controls>
+            <source src="sound.mp3" type="audio/mpeg">
+        </audio>
+
+        <p>Ласкаво просимо до нашого магазину онлайн-книг!</p>
+    </main>
     <footer></footer>
 </body>
+
 </html>

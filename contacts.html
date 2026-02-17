@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Адаптивність -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO опис -->
+    <meta name="description" content="Контакти онлайн бібліотеки. Зв'яжіться з нами через форму зворотного зв'язку.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Контакти | Онлайн бібліотека">
+    <meta property="og:description" content="Напишіть нам через форму зворотного зв'язку або знайдіть контакти.">
+    <meta property="og:image" content="images/icon/contacts.png">
+
+    <title>Контакти</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Головна</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="contacts.html">Контакти</a>
+        </nav>
+    </header>
+    <main>
+        <form action="">
+            <fieldset>
+                <legend>Контактна інформація</legend>
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" placeholder="Ім'я" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Email" required
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" placeholder="+380XXXXXXXXX" required pattern="\+380\d{9}">
+            </fieldset>
+            <fieldset>
+                <legend>Як з вами зв’язатися?</legend>
+                <input type="radio" id="contact-email" name="contact-method" value="email" required>
+                <label for="contact-email">Email</label>
+
+                <input type="radio" id="contact-phone" name="contact-method" value="phone">
+                <label for="contact-phone">Телефон</label>
+            </fieldset>
+            <fieldset>
+                <legend>Жанр книги</legend>
+                <select name="genre" id="genre" required>
+                    <optgroup label="Художня література">
+                        <option value="fantasy">Фентезі</option>
+                        <option value="detective">Детектив</option>
+                    </optgroup>
+                    <optgroup label="Наукова література">
+                        <option value="programming">Програмування</option>
+                        <option value="mathematics">Математика</option>
+                    </optgroup>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Повідомлення</legend>
+                <label for="message">Ваше повідомлення:</label><br>
+                <textarea name="message" id="message" rows="5" cols="40" placeholder="Повідомлення" required></textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Підписка</legend>
+                <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+                <label for="subscribe">Підписатися на розсилку нових книг</label>
+            </fieldset>
+
+            <br>
+            <button type="submit">Відправити</button>
+        </form>
+
+    </main>
+    <footer></footer>
+</body>
+
+</html>
