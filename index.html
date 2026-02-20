@@ -11,34 +11,40 @@
     <meta property="og:title" content="Головна | Онлайн бібліотека">
     <meta property="og:description"
         content="Читайте улюблені книги онлайн. Велика електронна бібліотека для студентів та книголюбів.">
-    <meta property="og:image" content="images/icon/logo.png">
+    <meta property="og:image" content="images/icon/logo.webp">
     <meta property="og:url" content="http://localhost/index.html">
     <title>Онлайн бібліотека </title>
 </head>
 
 <body>
     <header>
+        <a href="/" class="logo">
+            <img src="images/icon/logo.webp" alt="Логотип">
+        </a>
         <h1>Онлайн бібліотека</h1>
         <nav>
             <a href="index.html">Головна</a>
             <a href="catalog.html">Каталог</a>
             <a href="contacts.html">Контакти</a>
         </nav>
-
     </header>
     <main>
         <picture>
-            <!-- для великих екранів -->
-            <source media="(min-width: 800px)" srcset="images/library-home.jpg">
-            <!-- для мобільних -->
-            <source media="(max-width: 799px)" srcset="images/library-home.jpg">
-            <!-- базове зображення, якщо браузер не підтримує picture -->
-            <img src="images/library-home.jpg" alt="Онлайн бібліотека з книгами">
+            <source media="(min-width: 768px)" srcset="images/library-desktop.webp">
+
+            <source media="(max-width: 767px)" srcset="images/library-mobile.webp">
+
+            <img src="images/library-desktop.webp" alt="Інтер'єр онлайн бібліотеки">
         </picture>
 
+        <video controls>
+            <source src="video/library-video.mp4" type="video/mp4">
+        </video>
         <audio controls>
-            <source src="sound.mp3" type="audio/mpeg">
+            <source src="audio/library-sound.mp3" type="audio/mp3">
         </audio>
+
+
 
         <p>Ласкаво просимо до нашого магазину онлайн-книг!</p>
     </main>

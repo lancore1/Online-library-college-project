@@ -10,7 +10,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Контакти | Онлайн бібліотека">
     <meta property="og:description" content="Напишіть нам через форму зворотного зв'язку або знайдіть контакти.">
-    <meta property="og:image" content="images/icon/contacts.png">
+    <meta property="og:image" content="images/icon/contacts.webp">
 
     <title>Контакти</title>
 </head>
@@ -24,7 +24,7 @@
         </nav>
     </header>
     <main>
-        <form action="">
+        <form>
             <fieldset>
                 <legend>Контактна інформація</legend>
                 <label for="name">Ім'я:</label>
@@ -42,12 +42,14 @@
                 <input type="radio" id="contact-email" name="contact-method" value="email" required>
                 <label for="contact-email">Email</label>
 
-                <input type="radio" id="contact-phone" name="contact-method" value="phone">
+                <input type="radio" id="contact-phone" name="contact-method" value="phone" >
                 <label for="contact-phone">Телефон</label>
             </fieldset>
             <fieldset>
                 <legend>Жанр книги</legend>
+                <label for="genre">Оберіть конкретний жанр книги:</label>
                 <select name="genre" id="genre" required>
+                    <option value="" disabled selected>Оберіть жанр...</option>
                     <optgroup label="Художня література">
                         <option value="fantasy">Фентезі</option>
                         <option value="detective">Детектив</option>
