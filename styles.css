@@ -179,6 +179,22 @@ form select {
     font-family: inherit;
     transition: all 0.3s ease;
 }
+/* кастомізація чекбоксу та радіо кнопок */
+form input[type="radio"],
+form input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0 0.5rem 0 0;
+    cursor: pointer;
+    appearance: radio;
+}
+
+label[for] {
+    display: inline-block;
+    margin-right: 1rem;
+    cursor: pointer;
+}
 
 fieldset {
     border: 1px solid var(--accent-color);
