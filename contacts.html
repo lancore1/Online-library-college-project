@@ -11,19 +11,27 @@
     <meta property="og:title" content="Контакти | Онлайн бібліотека">
     <meta property="og:description" content="Напишіть нам через форму зворотного зв'язку або знайдіть контакти.">
     <meta property="og:image" content="images/icon/contacts.webp">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Контакти</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="index.html">Головна</a>
-            <a href="catalog.html">Каталог</a>
-            <a href="contacts.html">Контакти</a>
+            <ul>
+                <li><a href="index.html" class="active">Головна</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
         </nav>
     </header>
     <main>
+        <h2>Зв'яжіться з нами</h2>
         <form>
             <fieldset>
                 <legend>Контактна інформація</legend>
@@ -42,7 +50,7 @@
                 <input type="radio" id="contact-email" name="contact-method" value="email" required>
                 <label for="contact-email">Email</label>
 
-                <input type="radio" id="contact-phone" name="contact-method" value="phone" >
+                <input type="radio" id="contact-phone" name="contact-method" value="phone">
                 <label for="contact-phone">Телефон</label>
             </fieldset>
             <fieldset>
@@ -70,8 +78,6 @@
                 <input type="checkbox" id="subscribe" name="subscribe" value="yes">
                 <label for="subscribe">Підписатися на розсилку нових книг</label>
             </fieldset>
-
-            <br>
             <button type="submit">Відправити</button>
         </form>
 
