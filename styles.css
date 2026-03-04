@@ -1,3 +1,4 @@
+/* CSS-змінні та відносні одиниці (rem) */
 :root {
     --main-color: #f3e6de;
     --accent-color: #e07a5f;
@@ -9,17 +10,22 @@
     --container-width:100rem;
 }
 
-/* встановлюємо глобальне правило  box-sizing = border-box */
+.logo {
+    width: 5rem;
+    height: 5rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+/* Встановлюємо глобальне правило  box-sizing = border-box */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
     list-style: none;
 }
-
-header,
-main,
-footer {
+/* Центрування головного контейнера та padding */
+header, main, footer {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 var(--spacing);
@@ -36,41 +42,18 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Ієрархія заголовків */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Ієрархія заголовків та міжлітерний інтервал */
+h1, h2, h3, h4, h5, h6 {
     color: var(--accent-color);
     line-height: 1.2;
     margin-bottom: var(--spacing);
     letter-spacing: -0.02em;
 }
-
-h1 {
-    color: var(--accent-color);
-    font-weight: 900;
-    font-size: 2rem;
-}
-
-h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-}
-
-h3 {
-    font-size: 1.75rem;
-    font-weight: 600;
-}
-
-h4 {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
+h1 { color: var(--accent-color); font-weight: 900; font-size: 2rem; }
+h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.75rem; font-weight: 600; }
+h4 { font-size: 1.5rem; font-weight: 500; }
+/* Налаштування параграфів */
 p {
     color: var(--text-color);
     line-height: 1.5;
@@ -78,9 +61,8 @@ p {
     margin-bottom: var(--spacing);
     padding: 0.5rem 0;
 }
-
-picture img,
-video {
+/* Закруглення + рамка та тіні і ефект "elevation" */
+picture img, video {
     display: block;
     max-width: 100%;
     height: auto;
@@ -90,15 +72,14 @@ video {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-table,
-form {
+table, form {
     border: 1px solid #ccc;
     border-radius: var(--border-radius);
     padding: var(--spacing);
     background-color: #fff;
 }
 
-/* кастомізація таблиці */
+/* Кастомізація таблиці + використання overflow для контенту */
 table {
     width: 100%;
     box-shadow: 0 10px 25px rgba(74, 64, 48, 0.08);
@@ -114,8 +95,7 @@ thead tr {
     color: white;
 }
 
-th,
-td {
+th, td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -137,6 +117,8 @@ tfoot {
     background-color: #fcfcfc;
 }
 
+.table-note { text-align: right;}
+
 thead {
     background-color: var(--accent-color);
     color: white;
@@ -156,18 +138,17 @@ form textarea {
 form input {
     border: none;
 }
-
+/* Кастомізуємо input, textarea, select при фокусі*/
 form input:focus,
 form textarea:focus,
 form select:focus {
     outline: none;
-    /* Прибираємо стандартний контур браузера */
     border: 2px solid var(--accent-color);
     background-color: #fffaf8;
     box-shadow: 0 4px 12px rgba(224, 122, 95, 0.15);
     transform: translateY(-1px);
 }
-
+/* Кастомізуємо input, textarea, select*/
 form input,
 form textarea,
 form select {
@@ -180,7 +161,7 @@ form select {
     font-family: inherit;
     transition: all 0.3s ease;
 }
-/* кастомізація чекбоксу та радіо кнопок */
+/* Кастомізація чекбоксу та радіо кнопок */
 form input[type="radio"],
 form input[type="checkbox"] {
     display: inline-block;
@@ -210,7 +191,7 @@ fieldset:focus-within {
     box-shadow: 0 2px 8px rgba(224, 122, 95, 0.2);
 }
 
-/* стилізація кнопок типу submit */
+/* Стилізація кнопок типу submit */
 button[type="submit"] {
     background-color: var(--accent-color);
     color: white;
@@ -243,7 +224,7 @@ textarea::placeholder {
 }
 
 /* Валідація: червона рамка при помилці */
-input:invalid:not(:placeholder-shown) {
+input:invalid:not(:placeholder-shown) {/* :not(:placeholder-shown) потрібен, аби порожні поля не були червоними одразу при завантаженні сторінки */
     border: 2px solid #ff1900;
 }
 
@@ -256,40 +237,40 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 0; /* Вирішує проблему пробілів inline-block */
+    font-size: 0; /* вирішує проблему зайвих пробілів inline-block */
     text-align: left;
 }
 
 nav ul li {
     display: inline-block;
-    font-size: 1rem; /* Повертаємо розмір тексту */
+    font-size: 1rem; /* повертаємо розмір тексту */
     margin-right: 15px;
 }
-
+/* Аби останній елемент не мав зайвого відступу  */
 nav ul li:last-child {
     margin-right: 0;
 }
 
-/* стилізація посилань + плавний перехід між посиланнями*/
+/* Стилізація посилань + плавний перехід між посиланнями*/
 nav ul li a {
     display: block; /* збільшення зони кліку */
     padding: 10px 15px;
     text-decoration: none;
     color: var(--nav-color);
     font-weight: 600;
-    border-bottom: 2px solid transparent; /* резервуємо місце під рамку, аби текст не "стрибав" */
+    border-bottom: 2px solid transparent; /* резервуємо місце під рамку, аби текст не стрибав */
     transition: all 0.3s ease;
 }
-
+/* Ефект зміни кольору тексту у меню при наведенні */
 nav ul li a:hover {
     color: var(--nav-color--hover);
 }
-/* ефект активного меню */
+/* Ефект активного меню */
 nav ul li a.active {
     color: var(--accent-color);
     border-bottom-color: var(--accent-color);
 }
-/* вирівнювання чисел у таблиці праворуч */
+/* Вирівнювання чисел у таблиці праворуч */
 .number-cell {
     text-align: right;
 }
