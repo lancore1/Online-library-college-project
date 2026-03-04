@@ -6,9 +6,10 @@
     --nav-color--hover: #4a4030;
     --border-radius: 0.5rem;
     --spacing: 1rem;
+    --container-width:100rem;
 }
 
-/* встановлюємо глобальне правило */
+/* встановлюємо глобальне правило  box-sizing = border-box */
 *,
 *::before,
 *::after {
@@ -209,7 +210,7 @@ fieldset:focus-within {
     box-shadow: 0 2px 8px rgba(224, 122, 95, 0.2);
 }
 
-/* стилізація кнопок */
+/* стилізація кнопок типу submit */
 button[type="submit"] {
     background-color: var(--accent-color);
     color: white;
@@ -251,55 +252,44 @@ input:valid:not(:placeholder-shown) {
     border: 2px solid #2ecc71;
 }
 
-/* Плавний перехід між посиланнями*/
-a {
-    padding: 5px 5px 5px;
-    text-decoration: none;
-    color: var(--nav-color);
-    font-weight: 600;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-
-/* ефект активного меню */
-a.active {
-    border-bottom: 2px solid var(--accent-color);
-    color: var(--accent-color);
-}
-
-a:hover {
-    display: block;
-    text-decoration: none;
-    color: var(--nav-color--hover);
-    font-weight: 600;
-}
-
-nav {
-    width: 100%;
-    text-align: left;
-    gap: 20px;
-}
-
-ul {
+nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    font-size: 0; /* Вирішує проблему пробілів inline-block */
+    text-align: left;
 }
 
-nav ul li a {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-}
-
-li {
+nav ul li {
     display: inline-block;
+    font-size: 1rem; /* Повертаємо розмір тексту */
     margin-right: 15px;
 }
 
-li:last-child {
+nav ul li:last-child {
     margin-right: 0;
 }
 
+/* стилізація посилань + плавний перехід між посиланнями*/
+nav ul li a {
+    display: block; /* збільшення зони кліку */
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--nav-color);
+    font-weight: 600;
+    border-bottom: 2px solid transparent; /* резервуємо місце під рамку, аби текст не "стрибав" */
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--nav-color--hover);
+}
+/* ефект активного меню */
+nav ul li a.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+/* вирівнювання чисел у таблиці праворуч */
 .number-cell {
     text-align: right;
 }
