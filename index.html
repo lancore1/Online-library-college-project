@@ -18,43 +18,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style_adaptive.css">
     <title>Онлайн бібліотека</title>
 
 </head>
 
 <body>
     <header>
-        <a href="/">
-            <img src="images/icon/logo.webp" alt="Логотип" class="logo">
-        </a>
-        <h1>Онлайн бібліотека</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Головна</a></li>
+        <nav class="top-nav">
+            <a href="/">
+                <img src="images/icon/logo.webp" alt="Логотип" class="logo">
+            </a>
+            <h1>Онлайн бібліотека</h1>
+            <input id="menu-toggle" type="checkbox">
+
+            <label class="menu-button-container" for="menu-toggle">
+                <div class="menu-button"></div>
+            </label>
+
+            <ul class="menu">
+                <li><a href="index.html">Головна</a></li>
                 <li><a href="catalog.html">Каталог</a></li>
                 <li><a href="contacts.html">Контакти</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <picture>
-            <source media="(min-width: 768px)" srcset="images/library-desktop.webp">
+        <div class="media-container">
+            <picture>
+                <source media="(min-width: 768px)" srcset="images/library-desktop.webp">
+                <source media="(max-width: 767px)" srcset="images/library-mobile.webp">
+                <img src="images/library-desktop.webp" alt="Інтер'єр онлайн бібліотеки">
+            </picture>
 
-            <source media="(max-width: 767px)" srcset="images/library-mobile.webp">
-
-            <img src="images/library-desktop.webp" alt="Інтер'єр онлайн бібліотеки">
-        </picture>
-
-        <video controls>
-            <source src="video/library-video.mp4" type="video/mp4">
-        </video>
+            <video controls>
+                <source src="video/library-video.mp4" type="video/mp4">
+            </video>
+        </div>
         <audio controls>
             <source src="audio/library-sound.mp3" type="audio/mp3">
         </audio>
-
         <p>Ласкаво просимо до нашого магазину онлайн-книг!</p>
     </main>
-    <footer></footer>
+    <aside class="sidebar">
+        <h3>Категорії</h3>
+        <ul>
+            <li>
+                <a href="/catalog.html#popular-new-arrivals">Популярне</a>
+            </li>
+            <li><a href="/catalog.html#popular-new-arrivals">Новинки</a></li>
+        </ul>
+    </aside>
+    <footer>
+        <p>BookNest 2026 &#169; All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#popular-new-arrivals">
+                <img src="/images/icon/facebook.webp" alt="">
+            </a>
+            <a href="#">
+                <img src="/images/icon/instagram.webp" alt="">
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>

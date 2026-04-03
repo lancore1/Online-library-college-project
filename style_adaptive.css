@@ -1,0 +1,385 @@
+
+/* MOBILE FIRST */
+
+/* Налаштовуємо базові стилі (шрифти)  */
+h1 { font-size: 1.38rem; }
+h2 { font-size: 1.35rem; }
+h3 { font-size: 1.2rem; }
+
+/* Гнучкий медіа контент */
+img,
+video,
+audio,
+picture img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* GRID архітектура для Mobile First */
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "sidebar"
+        /* sidebar під main на мобільних */
+        "footer";
+    gap: 0;
+    /* відступи задаємо через padding самих секцій */
+    min-height: 100vh;
+}
+/* Призначаємо імена grid-елементам */
+header { grid-area: header;}
+main { grid-area: main;}
+footer { grid-area: footer;}
+aside, .sidebar { grid-area: sidebar; }
+
+/* Медіа-запит для планшетів та десктопу*/
+@media (min-width: 768px) {
+    /* Типографіка — збільшуємо заголовки */
+    h1 { font-size: 2.5rem;}
+
+    h2 { font-size: 2.1rem; }
+
+    /* Збільшуємо padding контейнера */
+    header, main, footer { padding-left: 4rem; padding-right: 4rem; }
+
+    main { padding-top: 3rem; padding-bottom: 3rem; }
+
+    /* Кнопка submit — не на весь екран */
+    button[type="submit"] {
+        width: auto;
+        min-width: 200px;
+        margin: 0;
+        /* вирівнювання залишаємо стандартним */
+    }
+
+    /* Grid для планшету і дексктопу дві колонки */
+    body {
+        grid-template-columns: 5fr 1fr;
+        grid-template-areas:
+            "header  header"
+            "main    sidebar"
+            /* sidebar праворуч від main */
+            "footer  footer";
+            
+    }
+
+    .sidebar {
+        align-self: flex-start;
+        /* Вирівнює сайдбар по верхньому краю grid-рядка */
+    }
+}
+
+/* Для великих екранів */
+@media (min-width: 1200px) {
+    /* Обмежуємо максимальну ширину grid і центруємо */
+    body {
+        max-width: 100rem;
+        margin: 0 auto;
+    }
+}
+
+
+/* Покращення вигляду медіа на головній сторінці */
+.media-container {
+    display: flex;
+    flex-direction: column; /* На мобільних в колонку*/
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .media-container {
+        flex-direction: row; /* На великих екранах у ряд*/
+        align-items: flex-start;
+    }
+    .media-container picture img, 
+    .media-container video {
+        width: 100%;
+        height: 400px;
+        object-fit: cover; 
+        border-radius: var(--border-radius);
+    }
+}
+
+/* Адаптивне меню-бургер */
+
+/* Базові налаштування навігації */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    position: relative; /* Важливо для позиціювання меню */
+}
+
+/* Кнопка-бургер (іконка) */
+.menu-button-container {
+    display: flex;
+    height: 20px;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Поверх меню */
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    display: block;
+    background-color: var(--accent-color);
+    position: absolute;
+    height: 3px;
+    width: 25px;
+    transition: transform 400ms ease;
+    border-radius: 2px;
+}
+
+/* Анімація меню */
+
+#menu-toggle {
+    display: none; /* Ховаємо сам чекбокс */
+}
+
+.menu-button::before { content: ''; margin-top: -8px; }
+.menu-button::after { content: ''; margin-top: 8px; }
+
+/* Анімація бургера в "Х" при натисканні */
+#menu-toggle:checked + .menu-button-container .menu-button { background: transparent; }
+#menu-toggle:checked + .menu-button-container .menu-button::before { margin-top: 0; transform: rotate(45deg); }
+#menu-toggle:checked + .menu-button-container .menu-button::after { margin-top: 0; transform: rotate(-45deg); }
+
+/* Мобільне меню */
+@media (max-width: 767px) {
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;       /* Меню на всю ширину екрана */
+        height: auto;      /* Висота залежить від контенту */
+        background-color: white;
+        padding: 60px 0 20px 0; /* Відступ зверху, щоб не перекривати кнопку-бургер */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        /* Поява зверху */
+        transform: translateY(-100%); /* Ховаємо вгору за межі екрана */
+        transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        z-index: 1000;
+    }
+
+     /* Стан при натисканні */
+    #menu-toggle:checked ~ .menu { transform: translateY(0); }
+    
+    .menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu li a {
+        font-size: 1.2rem;
+        padding: 10px;
+        display: block;
+        color: var(--text-color);
+        text-decoration: none;
+    }
+}
+
+/* Десктопна та планшетна версія меню */
+@media (min-width: 768px) {
+    #menu-toggle, 
+    .menu-button, 
+    .menu-button-container, 
+    label[for="menu-toggle"] {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        position: static; /* Повертаємо у звичайний потік */
+        transform: none; /* Вимикаємо анімацію */
+        width: auto;
+        height: auto;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        gap: 1rem;
+    }
+}
+
+
+/* Темна тема та системна інтеграція */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        /* Основні змінні для всієї сторінки */
+        --main-color: #111315;
+        --text-color: #e8e0d8;
+        --accent-color: #f3a97c;
+        --nav-color: #f5eee7;
+        --nav-color--hover: #f3a97c;
+    }
+
+    body { color: var(--text-color);}
+
+    /* Заголовки та текст */
+    h1, h2, h3, h4, h5, h6 { color: #ffd0b6;}
+
+    p {  color: #ddd4ca; }
+
+    /* Адаптація основних блоків та візуальних ефектів до темної теми */
+    .book-item, .sidebar, form, table,
+    .table-wrapper, .menu{
+        background-color: #1a1e22 ;
+        border-color: rgba(243, 169, 124, 0.16);
+        color: var(--text-color);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .sidebar {
+        border: 1px solid rgba(243, 169, 124, 0.18);
+        transform: translateZ(0); /* Виносимо на окремий compositing шар — примусовий repaint */
+        will-change: transform;   /* Підказка браузеру рендерити елемент одразу */
+    }
+    .book-item,
+    .sidebar,
+    form {
+        border: 1px solid rgba(243, 169, 124, 0.18);
+        backdrop-filter: blur(6px);
+    }
+
+    .book-item:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.45);
+    }
+
+    .book-item h4 { color: #f2d8c8; }
+
+    .book-item p { color: #bcb2aa; }
+
+    /* Таблиці */
+    thead tr,
+    thead {
+        background: linear-gradient(135deg, #f3a97c 0%, #e58d61 100%);
+        color: #1b1613;
+    }
+
+    th, td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) ;
+        color: var(--text-color);
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    tbody tr:hover {
+        background-color: rgba(243, 169, 124, 0.08);
+    }
+
+    tfoot {
+        background-color: #161a1d;
+        color: #b8afa7;
+    }
+
+    /* Форми */
+    input, textarea, select {
+        background-color: #121416;
+        color: var(--text-color);
+        border: 1px solid rgba(243, 169, 124, 0.18);
+    }
+
+    form input,
+    form textarea,
+    form select {
+        background-color: #121416;
+        color: var(--text-color);
+        border: 1px solid rgba(243, 169, 124, 0.18);
+    }
+
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+        background-color: #161a1d;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 4px rgba(243, 169, 124, 0.12);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #8f8780;
+        opacity: 0.9;
+    }
+
+    input:invalid:not(:placeholder-shown) {
+        border: 2px solid #ff6b6b;
+    }
+
+    input:valid:not(:placeholder-shown) {
+        border: 2px solid #56d364;
+    }
+
+    /* Кнопки */
+    button[type="submit"] {
+        background: linear-gradient(135deg, #f3a97c 0%, #e58d61 100%);
+        color: #1b1613;
+        box-shadow: 0 10px 20px rgba(243, 169, 124, 0.18);
+    }
+
+    button[type="submit"]:hover {
+        background: linear-gradient(135deg, #f6b489 0%, #ea9b72 100%);
+        transform: translateY(-1px) scale(1.01);
+    }
+
+    /* Навігація */
+    nav ul li a,
+    .menu li a {
+        color: var(--nav-color);
+    } 
+
+    nav ul li a:hover,
+    .menu li a:hover {
+        color: var(--nav-color--hover);
+    }
+
+    nav ul li a.active,
+    .menu li a.active {
+        color: var(--accent-color);
+    }
+
+    .menu-button,
+    .menu-button::before,
+    .menu-button::after {
+        background-color: var(--accent-color);
+    }
+
+    /* Сайдбар */
+    .sidebar h3 {
+        color: #ffd0b6;
+        border-bottom-color: rgba(243, 169, 124, 0.45);
+    }
+
+    .sidebar ul li a {
+        color: var(--text-color);
+    }
+
+    .sidebar ul li a:hover {
+        background-color: rgba(243, 169, 124, 0.08);
+        color: #ffd7c4;
+    }
+
+    .sidebar ul li a.active {
+        background-color: var(--accent-color);
+        color: #1b1613;
+    }
+}

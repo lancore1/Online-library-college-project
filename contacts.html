@@ -16,16 +16,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style_adaptive.css">
     <title>Контакти</title>
 </head>
 
 <body>
     <header>
-        <nav>
-            <ul>
+        <nav class="top-nav">
+            <input id="menu-toggle" type="checkbox">
+            <label class="menu-button-container" for="menu-toggle">
+                <div class="menu-button"></div>
+            </label>
+            <ul class="menu">
                 <li><a href="index.html">Головна</a></li>
                 <li><a href="catalog.html">Каталог</a></li>
-                <li><a href="contacts.html" class="active">Контакти</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
             </ul>
         </nav>
     </header>
@@ -79,9 +84,29 @@
             </fieldset>
             <button type="submit">Відправити</button>
         </form>
-
     </main>
-    <footer></footer>
+    <aside class="sidebar">
+        <h3>Ми у мережах</h3>
+        <ul>
+            <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+            <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+            <li><a href="https://t.me" target="_blank">Telegram</a></li>
+        </ul>
+        <div style="margin-top: 1rem; font-size: 0.85rem;">
+            <p>Маєте питання? Пишіть нам у месенджери!</p>
+        </div>
+    </aside>
+    <footer>
+        <p>BookNest 2026 &#169; All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#popular-new-arrivals">
+                <img src="/images/icon/facebook.webp" alt="">
+            </a>
+            <a href="#">
+                <img src="/images/icon/instagram.webp" alt="">
+            </a>
+        </div>
+    </footer>
 </body>
 
 </html>
