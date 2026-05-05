@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    <script src="script.js" defer></script>
     <header>
         <nav class="top-nav">
             <input id="menu-toggle" type="checkbox">
@@ -36,6 +37,13 @@
         </nav>
     </header>
     <main>
+        <div class="controls">
+            <input type="text" id="book-search" placeholder="Пошук книги за назвою...">
+            <p>Ціна: <strong id="price-display">0</strong> &#8372;</p>
+            <select id="category-filter">
+                <option value="all">Всі категорії</option>
+            </select>
+        </div>
         <h2>Каталог видань</h2>
         <div class="table-wrapper">
             <table>
@@ -45,44 +53,15 @@
                         <th>Автор</th>
                         <th>Рік видання</th>
                         <th>Ціна</th>
+                        <th>Деталі</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Грокаємо алгоритми</td>
-                        <td>Адітья Бхаргава</td>
-                        <td class="number-cell">2023</td>
-                        <td class="number-cell">560 &#8372;</td>
-                    </tr>
-                    <tr>
-                        <td>Чистий код</td>
-                        <td>Роберт Мартін</td>
-                        <td class="number-cell">2008</td>
-                        <td class="number-cell">480 &#8372;</td>
-                    </tr>
-                    <tr>
-                        <td>Багатий тато бідний тато</td>
-                        <td>Роберт Кійосакі</td>
-                        <td class="number-cell">1997</td>
-                        <td class="number-cell">250 &#8372;</td>
-                    </tr>
-                    <tr>
-                        <td>Head First Go</td>
-                        <td>Джей Макгаврен</td>
-                        <td class="number-cell">2018</td>
-                        <td class="number-cell">4007 &#8372;</td>
-                    </tr>
-                    <tr>
-                        <td>Патерни проєктування</td>
-                        <td>Ерік Фрімен, Елізабет Робсон, Кеті Сьєрра, Берт Бейтс</td>
-                        <td class="number-cell">2020</td>
-                        <td class="number-cell">1190 &#8372;</td>
-                    </tr>
+                <tbody id="catalog-body">
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="2">Примітка:</td>
-                        <td colspan="2" class="table-note">Ціни вказані в гривнях, включаючи ПДВ</td>
+                        <td colspan="3" class="table-note">Ціни вказані в гривнях, включаючи ПДВ</td>
                     </tr>
                 </tfoot>
             </table>
@@ -109,13 +88,10 @@
         </section>
     </main>
     <aside class="sidebar">
-        <h3>Жанри</h3>
-        <ul>
-            <li><a href="#programming">💻 Програмування</a></li>
-            <li><a href="#fiction">📚 Художня</a></li>
-            <li><a href="#science">🧬 Наукова</a></li>
-            <li><a href="#classic">🏛️ Класика</a></li>
-        </ul>
+        <h3>🛒 Кошик</h3>
+        <div id="cart-content">
+            <p class="empty-msg">Кошик порожній</p>
+        </div>
     </aside>
     <footer>
         <p>BookNest 2026 &#169; All rights reserved.</p>

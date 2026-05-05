@@ -110,6 +110,7 @@ form {
     padding: var(--spacing);
     background-color: #fff;
 }
+
 /* Обгортка для прокрутки таблиці */
 .table-wrapper {
     width: 100%;
@@ -265,7 +266,7 @@ button[type="submit"]:active {
 }
 
 /* Кастомізація placeholder */
-input::placeholder,
+form input::placeholder,
 textarea::placeholder {
     color: #a09080;
     font-style: italic;
@@ -273,15 +274,16 @@ textarea::placeholder {
 }
 
 /* Валідація: червона рамка при помилці */
-input:invalid:not(:placeholder-shown) {
+form input:invalid:not(:placeholder-shown) {
     /* :not(:placeholder-shown) потрібен, аби порожні поля не були червоними одразу при завантаженні сторінки */
     border: 2px solid #ff1900;
 }
 
 /* Зелена рамка при правильному заповненні */
-input:valid:not(:placeholder-shown) {
+form input:valid:not(:placeholder-shown) {
     border: 2px solid #2ecc71;
 }
+
 /* Flexbox навігація */
 nav ul {
     display: flex;
@@ -334,26 +336,31 @@ nav ul li a.active {
 .number-cell {
     text-align: right;
 }
+
 /* Простий footer */
 footer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* копірайт і іконки по краях */
+    justify-content: space-between;
+    /* копірайт і іконки по краях */
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
 footer p {
     font-size: 0.8rem;
     margin: 0;
     padding: 0;
 }
+
 .social-icons {
     display: flex;
-    gap:15px
+    gap: 15px
 }
+
 .social-icons a img {
     width: 30px;
 }
@@ -361,10 +368,12 @@ footer p {
 
 /* Основний контейнер сайдбару */
 .sidebar {
-    background-color: #ffffff; /* Білий фон для контрасту */
+    background-color: #ffffff;
+    /* Білий фон для контрасту */
     padding: 1.5rem;
     border-radius: var(--border-radius);
-    border: 1px solid rgba(224, 122, 95, 0.15); /* Дуже тонка рамка в колір акценту */
+    border: 1px solid rgba(224, 122, 95, 0.15);
+    /* Дуже тонка рамка в колір акценту */
     box-shadow: 0 4px 12px rgba(74, 64, 48, 0.05);
     height: fit-content;
 }
@@ -377,14 +386,16 @@ footer p {
     margin-bottom: 1.2rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--accent-color);
-    display: inline-block; /* Щоб лінія підкреслення не була на всю ширину */
+    display: inline-block;
+    /* Щоб лінія підкреслення не була на всю ширину */
 }
 
 /* Список категорій */
 .sidebar ul {
     padding: 0;
     margin: 0;
-    list-style: none; /* Прибираємо маркери */
+    list-style: none;
+    /* Прибираємо маркери */
 }
 
 .sidebar ul li {
@@ -405,9 +416,11 @@ footer p {
 
 /* Ефект при наведенні */
 .sidebar ul li a:hover {
-    background-color: #fdf5f2; /* Світло-бежевий фон */
+    background-color: #fdf5f2;
+    /* Світло-бежевий фон */
     color: var(--accent-color);
-    padding-left: 1.5rem; /* Ефект "зміщення" вправо */
+    padding-left: 1.5rem;
+    /* Ефект "зміщення" вправо */
 }
 
 /* Активний стан */
@@ -436,13 +449,14 @@ footer p {
 
 .book-item:hover {
     transform: scale(1.03);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .book-item img {
     width: 100%;
-    height: 350px; /* Фіксована висота для однорідності */
-    object-fit:contain ;
+    height: 350px;
+    /* Фіксована висота для однорідності */
+    object-fit: contain;
     border-radius: 4px;
     margin-bottom: 0.5rem;
 }
@@ -456,4 +470,97 @@ footer p {
 .book-item p {
     font-size: 0.85rem;
     color: #777;
+}
+
+/* Стилі для кнопки "Детальніше" */
+.details-button {
+    padding: 8px 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #2c3e50;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.details-button:hover {
+    background-color: #34495e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Ефект при натисканні */
+.details-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилізація самої комірки, де лежить кнопка */
+.action-cell {
+    text-align: center; /* Центруємо кнопку в колонці */
+    vertical-align: middle;
+}
+
+/* Стилізація обраного товару */
+.book-item.selected {
+    outline: 1.5px solid #ffaf5f;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+}
+
+/* Стиль для активного рядка в таблиці */
+#catalog-body tr.active {
+    background-color: #ffc464;  
+    border-left: 4px solid #2c3e50;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(224, 122, 95, 0.2);
+}
+
+/* Поле пошуку та селект */
+#book-search, 
+#category-filter {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Стилізація відображення ціни */
+.controls p {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+#price-display {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    padding: 0 5px;
+}
+
+#book-search:focus, 
+#category-filter:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.15);
 }

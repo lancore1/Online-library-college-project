@@ -1,10 +1,17 @@
-
 /* MOBILE FIRST */
 
 /* Налаштовуємо базові стилі (шрифти)  */
-h1 { font-size: 1.38rem; }
-h2 { font-size: 1.35rem; }
-h3 { font-size: 1.2rem; }
+h1 {
+    font-size: 1.38rem;
+}
+
+h2 {
+    font-size: 1.35rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
 
 /* Гнучкий медіа контент */
 img,
@@ -31,23 +38,49 @@ body {
     /* відступи задаємо через padding самих секцій */
     min-height: 100vh;
 }
+
 /* Призначаємо імена grid-елементам */
-header { grid-area: header;}
-main { grid-area: main;}
-footer { grid-area: footer;}
-aside, .sidebar { grid-area: sidebar; }
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}
+
+aside,
+.sidebar {
+    grid-area: sidebar;
+}
 
 /* Медіа-запит для планшетів та десктопу*/
 @media (min-width: 768px) {
-    /* Типографіка — збільшуємо заголовки */
-    h1 { font-size: 2.5rem;}
 
-    h2 { font-size: 2.1rem; }
+    /* Типографіка — збільшуємо заголовки */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2.1rem;
+    }
 
     /* Збільшуємо padding контейнера */
-    header, main, footer { padding-left: 4rem; padding-right: 4rem; }
+    header,
+    main,
+    footer {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
 
-    main { padding-top: 3rem; padding-bottom: 3rem; }
+    main {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
 
     /* Кнопка submit — не на весь екран */
     button[type="submit"] {
@@ -65,7 +98,7 @@ aside, .sidebar { grid-area: sidebar; }
             "main    sidebar"
             /* sidebar праворуч від main */
             "footer  footer";
-            
+
     }
 
     .sidebar {
@@ -76,6 +109,7 @@ aside, .sidebar { grid-area: sidebar; }
 
 /* Для великих екранів */
 @media (min-width: 1200px) {
+
     /* Обмежуємо максимальну ширину grid і центруємо */
     body {
         max-width: 100rem;
@@ -87,7 +121,8 @@ aside, .sidebar { grid-area: sidebar; }
 /* Покращення вигляду медіа на головній сторінці */
 .media-container {
     display: flex;
-    flex-direction: column; /* На мобільних в колонку*/
+    flex-direction: column;
+    /* На мобільних в колонку*/
     gap: 1.5rem;
     margin-bottom: 2rem;
     width: 100%;
@@ -95,14 +130,16 @@ aside, .sidebar { grid-area: sidebar; }
 
 @media (min-width: 1024px) {
     .media-container {
-        flex-direction: row; /* На великих екранах у ряд*/
+        flex-direction: row;
+        /* На великих екранах у ряд*/
         align-items: flex-start;
     }
-    .media-container picture img, 
+
+    .media-container picture img,
     .media-container video {
         width: 100%;
         height: 400px;
-        object-fit: cover; 
+        object-fit: cover;
         border-radius: var(--border-radius);
     }
 }
@@ -115,7 +152,8 @@ aside, .sidebar { grid-area: sidebar; }
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
-    position: relative; /* Важливо для позиціювання меню */
+    position: relative;
+    /* Важливо для позиціювання меню */
 }
 
 /* Кнопка-бургер (іконка) */
@@ -127,7 +165,8 @@ aside, .sidebar { grid-area: sidebar; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1001; /* Поверх меню */
+    z-index: 1001;
+    /* Поверх меню */
 }
 
 .menu-button,
@@ -145,16 +184,34 @@ aside, .sidebar { grid-area: sidebar; }
 /* Анімація меню */
 
 #menu-toggle {
-    display: none; /* Ховаємо сам чекбокс */
+    display: none;
+    /* Ховаємо сам чекбокс */
 }
 
-.menu-button::before { content: ''; margin-top: -8px; }
-.menu-button::after { content: ''; margin-top: 8px; }
+.menu-button::before {
+    content: '';
+    margin-top: -8px;
+}
+
+.menu-button::after {
+    content: '';
+    margin-top: 8px;
+}
 
 /* Анімація бургера в "Х" при натисканні */
-#menu-toggle:checked + .menu-button-container .menu-button { background: transparent; }
-#menu-toggle:checked + .menu-button-container .menu-button::before { margin-top: 0; transform: rotate(45deg); }
-#menu-toggle:checked + .menu-button-container .menu-button::after { margin-top: 0; transform: rotate(-45deg); }
+#menu-toggle:checked+.menu-button-container .menu-button {
+    background: transparent;
+}
+
+#menu-toggle:checked+.menu-button-container .menu-button::before {
+    margin-top: 0;
+    transform: rotate(45deg);
+}
+
+#menu-toggle:checked+.menu-button-container .menu-button::after {
+    margin-top: 0;
+    transform: rotate(-45deg);
+}
 
 /* Мобільне меню */
 @media (max-width: 767px) {
@@ -162,24 +219,30 @@ aside, .sidebar { grid-area: sidebar; }
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;       /* Меню на всю ширину екрана */
-        height: auto;      /* Висота залежить від контенту */
+        width: 100%;
+        /* Меню на всю ширину екрана */
+        height: auto;
+        /* Висота залежить від контенту */
         background-color: white;
-        padding: 60px 0 20px 0; /* Відступ зверху, щоб не перекривати кнопку-бургер */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 60px 0 20px 0;
+        /* Відступ зверху, щоб не перекривати кнопку-бургер */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1.5rem;
         /* Поява зверху */
-        transform: translateY(-100%); /* Ховаємо вгору за межі екрана */
+        transform: translateY(-100%);
+        /* Ховаємо вгору за межі екрана */
         transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         z-index: 1000;
     }
 
-     /* Стан при натисканні */
-    #menu-toggle:checked ~ .menu { transform: translateY(0); }
-    
+    /* Стан при натисканні */
+    #menu-toggle:checked~.menu {
+        transform: translateY(0);
+    }
+
     .menu li {
         width: 100%;
         text-align: center;
@@ -196,9 +259,10 @@ aside, .sidebar { grid-area: sidebar; }
 
 /* Десктопна та планшетна версія меню */
 @media (min-width: 768px) {
-    #menu-toggle, 
-    .menu-button, 
-    .menu-button-container, 
+
+    #menu-toggle,
+    .menu-button,
+    .menu-button-container,
     label[for="menu-toggle"] {
         display: none;
     }
@@ -206,8 +270,10 @@ aside, .sidebar { grid-area: sidebar; }
     .menu {
         display: flex;
         flex-direction: row;
-        position: static; /* Повертаємо у звичайний потік */
-        transform: none; /* Вимикаємо анімацію */
+        position: static;
+        /* Повертаємо у звичайний потік */
+        transform: none;
+        /* Вимикаємо анімацію */
         width: auto;
         height: auto;
         background: transparent;
@@ -230,17 +296,32 @@ aside, .sidebar { grid-area: sidebar; }
         --nav-color--hover: #f3a97c;
     }
 
-    body { color: var(--text-color);}
+    body {
+        color: var(--text-color);
+    }
 
     /* Заголовки та текст */
-    h1, h2, h3, h4, h5, h6 { color: #ffd0b6;}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #ffd0b6;
+    }
 
-    p {  color: #ddd4ca; }
+    p {
+        color: #ddd4ca;
+    }
 
     /* Адаптація основних блоків та візуальних ефектів до темної теми */
-    .book-item, .sidebar, form, table,
-    .table-wrapper, .menu{
-        background-color: #1a1e22 ;
+    .book-item,
+    .sidebar,
+    form,
+    table,
+    .table-wrapper,
+    .menu {
+        background-color: #1a1e22;
         border-color: rgba(243, 169, 124, 0.16);
         color: var(--text-color);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
@@ -248,9 +329,12 @@ aside, .sidebar { grid-area: sidebar; }
 
     .sidebar {
         border: 1px solid rgba(243, 169, 124, 0.18);
-        transform: translateZ(0); /* Виносимо на окремий compositing шар — примусовий repaint */
-        will-change: transform;   /* Підказка браузеру рендерити елемент одразу */
+        transform: translateZ(0);
+        /* Виносимо на окремий compositing шар — примусовий repaint */
+        will-change: transform;
+        /* Підказка браузеру рендерити елемент одразу */
     }
+
     .book-item,
     .sidebar,
     form {
@@ -263,9 +347,13 @@ aside, .sidebar { grid-area: sidebar; }
         box-shadow: 0 16px 28px rgba(0, 0, 0, 0.45);
     }
 
-    .book-item h4 { color: #f2d8c8; }
+    .book-item h4 {
+        color: #f2d8c8;
+    }
 
-    .book-item p { color: #bcb2aa; }
+    .book-item p {
+        color: #bcb2aa;
+    }
 
     /* Таблиці */
     thead tr,
@@ -274,8 +362,9 @@ aside, .sidebar { grid-area: sidebar; }
         color: #1b1613;
     }
 
-    th, td {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) ;
+    th,
+    td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         color: var(--text-color);
     }
 
@@ -293,7 +382,9 @@ aside, .sidebar { grid-area: sidebar; }
     }
 
     /* Форми */
-    input, textarea, select {
+    form input,
+    textarea,
+    select {
         background-color: #121416;
         color: var(--text-color);
         border: 1px solid rgba(243, 169, 124, 0.18);
@@ -315,17 +406,17 @@ aside, .sidebar { grid-area: sidebar; }
         box-shadow: 0 0 0 4px rgba(243, 169, 124, 0.12);
     }
 
-    input::placeholder,
+    form input::placeholder,
     textarea::placeholder {
         color: #8f8780;
         opacity: 0.9;
     }
 
-    input:invalid:not(:placeholder-shown) {
+    form input:invalid:not(:placeholder-shown) {
         border: 2px solid #ff6b6b;
     }
 
-    input:valid:not(:placeholder-shown) {
+    form input:valid:not(:placeholder-shown) {
         border: 2px solid #56d364;
     }
 
@@ -345,7 +436,7 @@ aside, .sidebar { grid-area: sidebar; }
     nav ul li a,
     .menu li a {
         color: var(--nav-color);
-    } 
+    }
 
     nav ul li a:hover,
     .menu li a:hover {
@@ -382,4 +473,46 @@ aside, .sidebar { grid-area: sidebar; }
         background-color: var(--accent-color);
         color: #1b1613;
     }
+
+    /* Стилізація обраного товару */
+    .book-item.selected {
+        outline: 1.5px solid #78a9da;
+        background-color: rgba(1, 128, 255, 0.05);
+        transform: scale(1.02);
+        transition: all 0.2s ease;
+    }
+
+    /* Стиль для активного рядка в таблиці */
+    #catalog-body tr.active {
+        background-color: #1A1A1A;
+        border-left: 4px solid #ffffff;
+    }
+
+    .controls {
+        background-color: #1a1e22;
+        border-color: rgba(243, 169, 124, 0.18);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    #book-search, 
+    #category-filter {
+        background-color: #121416;
+        color: var(--text-color);
+        border-color: rgba(243, 169, 124, 0.2);
+    }
+
+    #book-search:focus, 
+    #category-filter:focus {
+        background-color: #161a1d;
+        border-color: var(--accent-color);
+    }
+
+    .controls p {
+        color: #ddd4ca;
+    }
+
+    #price-display {
+        color: var(--accent-color);
+    }
+
 }
