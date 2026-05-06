@@ -52,7 +52,7 @@ if (catalogContainer) {
         row.querySelector('.action-cell').append(detailsBtn); // додаємо кнопку у таблицю
         catalogContainer.append(row);
     });
-    // Один обробник на весь контейнер
+    // Обробник кліку на кнопку "Детальніше"
     catalogContainer.addEventListener('click', (event) => {
         const row = event.target.closest('tr'); // отримуємо рядок з таблиці
         const isButton = event.target.classList.contains('details-button');
@@ -72,7 +72,7 @@ if (catalogContainer) {
 
             if (item) {
                 alert(
-                    `📖 Книга: ${item['book title']}\n` +
+                    `📕 Книга: ${item['book title']}\n` +
                     `👤 Автор: ${item.author.name}\n` +
                     `📂 Категорія: ${item.category}\n` +
                     `📄 Кількість сторінок: ${item.pages}`
@@ -116,6 +116,7 @@ const categoryContainer = document.querySelector('#category-filter');
 
 if (categoryContainer) {
     categorySet.forEach(item => {
+        // Створюємо елементи option
         const option = document.createElement('option');
         option.textContent = item;
         option.value = item;
@@ -144,25 +145,26 @@ if (searchInput && priceDisplay) {
     });
 }
 
+// Реалізація кошику
 const cartContent = document.querySelector('#cart-content');
 
 if (catalogContainer && cartContent) {
     catalogContainer.addEventListener('click', (event) => {
         const row = event.target.closest('tr');
-
+        // Отримуємо isbn обраного рядку
         const bookIsbn = row.querySelector('.details-button')?.dataset.isbn;
         if (!bookIsbn) return;
 
         if (row.classList.contains('active')) {
-            // додавання у кошик
+            // Додавання у кошик
             const alreadyInCart = cartContent.querySelector(`[data-cart-isbn="${bookIsbn}"]`);
             if (alreadyInCart) return; // Якщо вже є не дублюємо
 
             const emptyMsg = cartContent.querySelector('.empty-msg');
             if (emptyMsg) emptyMsg.remove();
 
-            const clone = row.cloneNode(true);
-            clone.dataset.cartIsbn = bookIsbn; // унікальний ідентифікатор товару у кошику
+            const clone = row.cloneNode(true); // Копіюємо повністю рядок з таблиці
+            clone.dataset.cartIsbn = bookIsbn; // Унікальний ідентифікатор товару у кошику
 
             // Видаляємо непотрібні стовбці з рядка
             const actionCell = clone.querySelector('.action-cell');
@@ -174,8 +176,8 @@ if (catalogContainer && cartContent) {
                 authorCell.remove();
             }
 
-            clone.classList.add('cart-item-copy', 'added-animation');
-            cartContent.appendChild(clone); // додаємо елемент у кошик
+            clone.classList.add('cart-item-copy', 'added-animation'); // Додаємо анімацію
+            cartContent.appendChild(clone); // Додаємо елемент у кошик
 
             setTimeout(() => clone.classList.remove('added-animation'), 200);
 

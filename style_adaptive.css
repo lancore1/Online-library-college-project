@@ -92,7 +92,7 @@ aside,
 
     /* Grid для планшету і дексктопу дві колонки */
     body {
-        grid-template-columns: 5fr 1fr;
+        grid-template-columns: 5fr 1.5fr;
         grid-template-areas:
             "header  header"
             "main    sidebar"

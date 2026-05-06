@@ -502,7 +502,8 @@ footer p {
 
 /* Стилізація самої комірки, де лежить кнопка */
 .action-cell {
-    text-align: center; /* Центруємо кнопку в колонці */
+    text-align: center;
+    /* Центруємо кнопку в колонці */
     vertical-align: middle;
 }
 
@@ -515,7 +516,7 @@ footer p {
 
 /* Стиль для активного рядка в таблиці */
 #catalog-body tr.active {
-    background-color: #ffc464;  
+    background-color: #ffc464;
     border-left: 4px solid #2c3e50;
 }
 
@@ -533,7 +534,7 @@ footer p {
 }
 
 /* Поле пошуку та селект */
-#book-search, 
+#book-search,
 #category-filter {
     flex: 1;
     min-width: 200px;
@@ -558,9 +559,28 @@ footer p {
     padding: 0 5px;
 }
 
-#book-search:focus, 
+#book-search:focus,
 #category-filter:focus {
     outline: none;
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.15);
+}
+
+/* Анімація для кошика */
+.cart-item-copy {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: var(--border-radius);
+    background-color: #9e9d9d;
+    border: 1px solid rgba(224, 122, 95, 0.2);
+    opacity: 100;
+    transform: translateX(0);
+    transition: all 0.4s;
+}
+
+.added-animation {
+    opacity: 0;
+    transform: translateX(-20px);
 }
